@@ -3,43 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Role Brief - EKSON Math VR</title>
+    <title>EKSON Math VR Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 900px; margin: 40px auto; padding: 30px; background: #f5f5f5; line-height: 1.6; }
-        .container { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 15px; }
-        h2 { color: #34495e; margin-top: 30px; border-left: 4px solid #3498db; padding-left: 15px; }
-        ul { padding-left: 20px; }
-        li { margin: 10px 0; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; }
-        .back-link:hover { text-decoration: underline; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 15px;
+        }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .nav-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-card:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+        .badge {
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+        #viewer {
+            display: none;
+            margin-top: 30px;
+        }
+        #viewer.active {
+            display: block;
+        }
+        .back-btn {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .prototype-btn {
+            background: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-link">← Back to Portfolio</a>
-        <h1>Company Role Brief</h1>
+        <h1>🎓 EKSON Math VR Portfolio</h1>
+        <p><strong>Math VR Curriculum Portfolio - Educational Content Developer & Instructional Designer</strong></p>
         
-        <h2>1. Role Understanding</h2>
-        <p>The role combines mathematics expertise, educational content development, and collaboration with technology and instructional design teams.</p>
+        <div id="main-nav">
+            <div class="nav-grid">
+                <div class="nav-card" onclick="loadMD('00_Company_Role_Brief.md')">
+                    <h3>📄 Company Role Brief</h3>
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/01_Curriculum_Analysis.md')">
+                    <span class="badge">01</span> Curriculum Analysis
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/02_Learning_Objectives.md')">
+                    <span class="badge">02</span> Learning Objectives
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/03_Lesson_Specification.md')">
+                    <span class="badge">03</span> Lesson Specification
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/04_Script.md')">
+                    <span class="badge">04</span> Script
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/05_Storyboard.md')">
+                    <span class="badge">05</span> Storyboard
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/06_Math_Content.md')">
+                    <span class="badge">06</span> Math Content
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/07_Question_Bank.md')">
+                    <span class="badge">07</span> Question Bank
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/08_Solution_Guide.md')">
+                    <span class="badge">08</span> Solution Guide
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/09_QA_Checklist.md')">
+                    <span class="badge">09</span> QA Checklist
+                </div>
+                <div class="nav-card" onclick="loadMD('01_Grade_5_Fractions/10_VR_Requirements.md')">
+                    <span class="badge">10</span> VR Requirements
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="01_Grade_5_Fractions/11_Prototype.html" class="prototype-btn">🎮 Launch Interactive Prototype</a>
+            </div>
+        </div>
         
-        <h2>2. What I Do in the Role</h2>
-        <ol>
-            <li>Analyze the mathematics curriculum and identify the required learning outcomes.</li>
-            <li>Define clear and measurable learning objectives for each lesson.</li>
-            <li>Design explanations, examples, activities, questions, and assessments that match the learner's level.</li>
-            <li>Review mathematical content to ensure accuracy, clarity, and alignment with the curriculum.</li>
-            <li>Create scripts and storyboards that explain what the learner sees, hears, and does.</li>
-            <li>Define interactive, visual, 3D, or VR elements that can make the mathematical concept easier to understand.</li>
-        </ol>
-
-        <h2>3. Collaboration Points</h2>
-        <ul>
-            <li>Work with 3D Artists to create accurate mathematical models</li>
-            <li>Collaborate with Unity Developers to implement interactions</li>
-            <li>Coordinate with Instructional Designers to ensure pedagogical effectiveness</li>
-            <li>Partner with QA Testers to verify mathematical accuracy</li>
-        </ul>
+        <div id="viewer">
+            <div class="back-btn" onclick="goBack()">← Back to Portfolio</div>
+            <div id="content"></div>
+        </div>
     </div>
+
+    <script>
+        async function loadMD(filePath) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error('File not found');
+                const markdown = await response.text();
+                const html = marked.parse(markdown);
+                document.getElementById('content').innerHTML = html;
+                document.getElementById('main-nav').style.display = 'none';
+                document.getElementById('viewer').classList.add('active');
+                window.scrollTo(0, 0);
+            } catch (error) {
+                alert('Error loading: ' + error.message);
+            }
+        }
+        
+        function goBack() {
+            document.getElementById('main-nav').style.display = 'block';
+            document.getElementById('viewer').classList.remove('active');
+        }
+    </script>
 </body>
 </html>
