@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EKSON Math VR Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: white; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { font-size: 1.2em; opacity: 0.9; }
+        .content { padding: 40px; }
+        .nav { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .nav-card { 
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-card:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        .nav-card h3 { color: #2c3e50; margin-bottom: 10px; }
+        .nav-card p { color: #7f8c8d; font-size: 0.9em; }
+        .badge { 
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .prototype-btn { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .prototype-btn:hover { 
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        #viewer { 
+            display: none;
+            padding: 40px;
+            background: white;
+        }
+        #viewer.active { display: block; }
+        #viewer h1 { color: #2c3e50; border-bottom: 3px solid #667eea; padding-bottom: 15px; margin-bottom: 30px; }
+        #viewer h2 { color: #34495e; margin-top: 30px; border-left: 4px solid #667eea; padding-left: 15px; }
+        #viewer h3 { color: #2980b9; margin-top: 20px; }
+        #viewer ul, #viewer ol { padding-left: 25px; margin: 15px 0; }
+        #viewer li { margin: 8px 0; }
+        #viewer p { margin: 15px 0; line-height: 1.6; }
+        #viewer table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        #viewer th, #viewer td { padding: 12px; border: 1px solid #ecf0f1; text-align: left; }
+        #viewer th { background: #667eea; color: white; }
+        #viewer tr:hover { background: #f8f9fa; }
+        #viewer code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; }
+        #viewer blockquote { border-left: 4px solid #667eea; padding-left: 20px; margin: 20px 0; color: #7f8c8d; }
+        .back-btn { 
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .back-btn:hover { background: #764ba2; }
+        .loading { text-align: center; padding: 40px; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 EKSON Math VR Portfolio</h1>
+            <p>Math VR Curriculum Portfolio - Educational Content Developer & Instructional Designer</p>
+        </div>
+        
+        <div class="content" id="main-content">
+            <div class="nav">
+                <div class="nav-card" onclick="loadFile('00_Company_Role_Brief.md')">
+                    <span class="badge">Document</span>
+                    <h3>📄 Company Role Brief</h3>
+                    <p>Understanding the role requirements and responsibilities</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/01_Curriculum_Analysis.md')">
+                    <span class="badge">01</span>
+                    <h3> Curriculum Analysis</h3>
+                    <p>Topic overview, learning objectives, and VR opportunities</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/02_Learning_Objectives.md')">
+                    <span class="badge">02</span>
+                    <h3>🎯 Learning Objectives</h3>
+                    <p>Clear and measurable learning outcomes</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/03_Lesson_Specification.md')">
+                    <span class="badge">03</span>
+                    <h3>📋 Lesson Specification</h3>
+                    <p>General info, prerequisites, and environment details</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/04_Script.md')">
+                    <span class="badge">04</span>
+                    <h3>🎬 Script</h3>
+                    <p>Dialogue, interactions, and feedback for each scene</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/05_Storyboard.md')">
+                    <span class="badge">05</span>
+                    <h3>🎨 Storyboard</h3>
+                    <p>Visual and interaction planning for each scene</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/06_Math_Content.md')">
+                    <span class="badge">06</span>
+                    <h3> Math Content</h3>
+                    <p>Core mathematical rules and vocabulary</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/07_Question_Bank.md')">
+                    <span class="badge">07</span>
+                    <h3>❓ Question Bank</h3>
+                    <p>Assessment questions with feedback</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/08_Solution_Guide.md')">
+                    <span class="badge">08</span>
+                    <h3>📖 Solution Guide</h3>
+                    <p>Step-by-step solutions and common misconceptions</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/09_QA_Checklist.md')">
+                    <span class="badge">09</span>
+                    <h3>✅ QA Checklist</h3>
+                    <p>Quality assurance and review criteria</p>
+                </div>
+                
+                <div class="nav-card" onclick="loadFile('01_Grade_5_Fractions/10_VR_Requirements.md')">
+                    <span class="badge">10</span>
+                    <h3>🥽 VR Requirements</h3>
+                    <p>3D assets, interactions, and technical specs</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">🎮 Interactive Prototype</h2>
+                <a href="01_Grade_5_Fractions/11_Prototype.html" class="prototype-btn">Launch VR Prototype</a>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; margin-top: 40px;">
+                <h3 style="color: #2c3e50; margin-bottom: 15px;">💡 About This Portfolio</h3>
+                <p style="color: #7f8c8d; line-height: 1.6;">
+                    This portfolio demonstrates a complete end-to-end instructional design workflow for VR math lessons, 
+                    bridging the gap between pedagogical goals and technical execution. Each document represents a critical 
+                    step in the development process, from initial curriculum analysis to final quality assurance.
+                </p>
+                <p style="color: #7f8c8d; margin-top: 15px;">
+                    <strong>GitHub Repository:</strong> 
+                    <a href="https://github.com/salmanic007/EKSON-Math-VR-Portfolio" style="color: #667eea;">View Source Code</a>
+                </p>
+            </div>
+        </div>
+        
+        <div id="viewer">
+            <div class="back-btn" onclick="goBack()">← Back to Portfolio</div>
+            <div id="content-area"></div>
+        </div>
+    </div>
+
+    <script>
+        async function loadFile(filePath) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('viewer').classList.add('active');
+            document.getElementById('content-area').innerHTML = '<div class="loading">Loading...</div>';
+            
+            try {
+                const response = await fetch(filePath);
+                const markdown = await response.text();
+                const html = marked.parse(markdown);
+                document.getElementById('content-area').innerHTML = html;
+                window.scrollTo(0, 0);
+            } catch (error) {
+                document.getElementById('content-area').innerHTML = '<p style="color: red;">Error loading file: ' + error.message + '</p>';
+            }
+        }
+        
+        function goBack() {
+            document.getElementById('viewer').classList.remove('active');
+            document.getElementById('main-content').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
